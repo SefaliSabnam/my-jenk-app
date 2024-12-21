@@ -1,0 +1,22 @@
+#shebang line
+#:/ bin/bash
+
+#Download the jenkins repo
+sudo wget -O /etc/yum.repos.d/jenkins.repo \
+    https://pkg.jenkins.io/redhat-stable/jenkins.repo
+#import jenkins key
+sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
+#upgrade the OS
+sudo yum upgrade
+# Add required dependencies for the jenkins package
+sudo yum install fontconfig java-17-openjdk
+#Install Jenkins
+sudo yum install jenkins
+#Reload the configuration of the system
+sudo systemctl daemon-reload
+
+#start the jenkins server
+sudo systemctl start jenkins
+
+#check the status of the jenkins
+sudo systemctl status jenkins
